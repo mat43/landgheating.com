@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z485TK1CZ8"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Le0zRAqAAAAANqOzvUIRILIfVeZQtF_-jaCCaEI"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z485TK1CZ8');
+      
+      function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+      }
+
+      $(document).ready(function () {
+        $("form").submit(function (event) {
+          event.preventDefault();
+          grecaptcha.ready(function() {
+            grecaptcha.execute('6Le0zRAqAAAAANqOzvUIRILIfVeZQtF_-jaCCaEI', {action: 'submit'}).then(function(token) {
+              var formData = {
+                firstName: $("#fname").val(),
+                lastName: $("#lname").val(),
+                email: $("#email").val(),
+                phoneNumber: $("#phonenumber").val(),
+                street: $("#street").val(),
+                city: $("#city").val(),
+                installType: $("#install-type").val(),
+                description: $("#description").val(),
+                captcha: token,
+              };
+
+            $.ajax({
+              type: "POST",
+              url: "https://api.landgheating.com/contact/new",
+              data: JSON.stringify(formData),
+              contentType: 'application/json',
+            }).done(function (data) {
+              if (data === "OK") {
+                document.getElementById("form-div").classList.add("hidden");
+                document.getElementById("form-div").classList.remove("flex");
+
+                document.getElementById("success").classList.remove("hidden");
+                document.getElementById("success").classList.add("flex");
+              }
+            }).fail(function () {
+                document.getElementById("form-div").classList.add("hidden");
+                document.getElementById("form-div").classList.remove("flex");
+
+                document.getElementById("error").classList.remove("hidden");
+                document.getElementById("error").classList.add("flex");
+            });
+            });
+          });
+        });
+      });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L&G Heating & Cooling</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="description" content="Reliable HVAC care is our promise. From expert repairs to seamless installations, our team ensures your comfort with quality you can depend on. We're committed to your satisfaction, day or night.">
+  <meta name="keywords" content="heating and cooling, hvac, landg heating, l&g, l&g heating and cooling, l&g heating & cooling, air conditioner installer, furnace installer, palos hills air conditioning, tinley park heating and cooling, lemont heating and cooling, darien heating and cooling, hvac specialists">
+  <meta name="author" content="L&G Heating & Cooling, Inc">
+  <link rel="stylesheet" href="output.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Varela&display=swap" rel="stylesheet">
+  <script src="index.js"></script>
+</head>
+
+<body>
+    <div> <!-- Content Wrapper -->
+      <header>
+        <nav class="bg-white px-6 lg:px-0">
+          <div class="lg:flex justify-center pb-2 pt-3 items-center text-center hidden bg-blue-300">
+            <img src="/assets/logo.png" class="h-24 w-auto align-middle" alt="L&G Heating Logo">
+            <div class="flex flex-col ml-6">
+              <p class="font-semibold font-subheadings text-black text-xl">Emergency Service</p>
+              <div class="flex justify-center items-center text-center">
+                <svg class="h-4 flex mr-2" data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <a href="tel:7736162847" class="font-medium font-subheadings text-black text-xl">(773) 616-2847</p></a>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-between lg:justify-center items-center pt-3 pb-4 relative"> <!-- Nav Wrapper -->
+            <img src="/assets/logo.png" class="h-14 md:h-16 w-auto align-middle lg:hidden pr-3" alt="L&G Heating Logo">
+            <div class="flex items-center">
+              <a href="tel:7736162847">
+                <svg class="h-8 mr-3 lg:hidden cursor-pointer flex" data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+              <svg class="h-10 lg:hidden cursor-pointer flex" data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onclick="toggleMobileMenu()">
+                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <ul class="lg:flex justify-center items-center text-sm font-semibold leading-6 hidden">
+              <li class="p-5">
+                <a class="text-gray-600 hover:text-black hover:transition ease-in duration-300" href="#about-us">About Us</a>
+              </li>
+              <li class="p-5">
+                <a class="text-gray-600 hover:text-black hover:transition ease-in duration-300" href="#our-values">Our Values</a>
+              </li>
+              <li class="p-5">
+                <a class="text-gray-600 hover:text-black hover:transition ease-in duration-300" href="#services">Services</a>
+              </li>
+              <li class="p-5">
+                <a class="text-gray-600 hover:text-black hover:transition ease-in duration-300" href="#guarantee">Our Guarantee</a>
+              </li>
+              <li class="">
+                <a href="#request-service">
+                  <div class="border-2 rounded border-black px-3 py-2 ml-2 text-black hover:text-white hover:bg-black hover:transition ease-in duration-300">
+                    <span class="font-semibold">Request Service</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <ul class="hidden lg:hidden flex-col items-center text-center bg-white py-4 w-full z-50 absolute" id="mobileMenu">
+          <li><a class="text-gray-700 font-body hover:text-black hover:transition ease-in duration-300 pb-6 flex" href="#about-us" onclick="toggleMobileMenu()">About Us</a></li>
+          <li><a class="text-gray-700 font-body hover:text-black hover:transition ease-in duration-300 pb-6 flex" href="#our-values" onclick="toggleMobileMenu()">Our Values</a></li>
+          <li><a class="text-gray-700 font-body hover:text-black hover:transition ease-in duration-300 pb-6 flex" href="#services" onclick="toggleMobileMenu()">Services</a></li>
+          <li><a class="text-gray-700 font-body hover:text-black hover:transition ease-in duration-300 pb-6 flex" href="#guarantee" onclick="toggleMobileMenu()">Our Guarantee</a></li>
+          <li><a class="text-black border-2 border-black font-body hover:text-white hover:bg-black hover:transition ease-in duration-300 mb-6 px-4 py-2 flex" href="#request-service" onclick="toggleMobileMenu()">Request Service</a></li>
+        </ul>
+      </header>
+    
+        <main>
+          <div> <!-- Main Body Wrapper -->
+            <div class="bg-header xl:bg-cover bg-cover bg-repeat bg-bottom items-center text-center flex justify-center px-8 py-32"> <!-- Background + Slogan -->
+              <div class="max-w-3xl">
+                <h1 class="text-white font-extrabold text-6xl leading-14 mt-0 font-headings">Comfort you can count on, quality you can trust.</p>
+                <p class="text-base font-normal block mb-2 mt-8 font-body">Reliable HVAC care is our promise. From expert repairs to seamless installations, our team ensures your comfort with quality you can depend on. We're committed to your satisfaction, day or night.</span>
+                <div>
+                  <a class="text-white mt-12 bg-primary-50 font-bold rounded-md px-7 py-4 cursor-pointer inline-block text-sm hover:bg-primary-100 hover:transition ease-in duration-300" href="#request-service">Request Service</a>
+                </div>
+              </div>
+            </div>
+
+            <section id="about-us">  <!-- About Us Section -->
+              <div class="text-center py-6 px-10 md:px-16 lg:px-32 xl:px-64">
+                <div class="justify-center items-center flex flex-col md:flex-row p-5">
+                  <div>
+                    <h1 class="font-subheadings text-3xl mb-5 text-left">About Us</h1>
+                    <p class="text-sm font-body text-left mb-5">Welcome to L&G Heating & Cooling! With over a decade of experience, we are your trusted experts in the installation, service, and repair of all HVAC products. Our mission is to provide families and businesses with top-quality heating and cooling solutions that fit their needs and budgets.</p>
+                    <p class="text-sm font-body text-left mb-5">Founded by a dedicated professional with a passion for HVAC excellence, L&G Heating & Cooling has built a reputation for reliability, expertise, and customer satisfaction. Whether you need a quick repair, a complete system installation, or routine maintenance, we have the knowledge and tools to get the job done right.</p>
+                    <p class="text-sm font-body text-left mb-5">Our team is equipped with a comprehensive inventory of parts and state-of-the-art equipment to ensure we can swiftly address any heating or cooling issue you may encounter. We are committed to providing energy-efficient solutions to enhance your comfort while reducing your energy costs.</p>
+                    <p class="text-sm font-body text-left">At L&G Heating & Cooling, we stand behind the quality of our work with a satisfaction guarantee. We serve a wide range of areas and are always ready to help you with your HVAC needs. Contact us today to learn more or to get a free estimate.</p>
+                  </div>
+                  <img class="h-80 md:ml-11 mt-4 md:mb-auto border-black border-2" src="/assets/linas.jpeg">
+                </div>
+              </div>
+            </section>
+
+            <section id="our-values"> <!-- Our Values Section-->
+              <div class="text-center py-5 px-10 md:px-16 lg:px-32 xl:px-64">
+                <h1 class="font-subheadings text-3xl mb-3">Our Values</h1>
+                <div class="md:flex justify-center items-center"> <!-- Grid Block -->
+                  <div class="bg-white items-center flex flex-col mx-3 md:h-72 my-5 px-9 py-9 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                    <img class="h-16 mb-6" src="./assets/performance.webp">
+                    <h1 class="font-headings font-semibold text-base mb-3">Performance</h1>
+                    <p class="text-gray-600 text-xs">Our performance is a vital reflection of who we are and a testament to our ability to deliver on promises to our customers.</p>
+                  </div>
+                  <div class="bg-white items-center flex flex-col mx-3 md:h-72 my-5 px-9 py-9 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                    <img class="h-16 mb-6" src="./assets/employee.webp">
+                    <h1 class="font-headings font-semibold text-base mb-3">Integrity</h1>
+                    <p class="text-gray-600 text-xs">Honesty and transparency guide our business practices. We believe in doing the right thing, every time, which means providing honest assessments, fair pricing, and reliable services you can trust.</p>
+                  </div>
+                  <div class="bg-white items-center flex flex-col mx-3 md:h-72 my-5 px-9 py-9 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                    <img class="h-16 mb-6" src="./assets/customer.webp">
+                    <h1 class="font-headings font-semibold text-base mb-3">Customer Care</h1>
+                    <p class="text-gray-600 text-xs">Our customers are at the heart of everything we do. We are dedicated to providing exceptional service and ensuring complete satisfaction with every project, big or small. Your comfort and trust are our top priorities.</p>
+                  </div>
+                </div>
+                <div class="md:flex gap-10 justify-center items-center"> <!-- Grid Block -->
+                  <div class="bg-white items-center flex flex-col mx-3 md:h-72 my-5 px-9 py-9 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                    <img class="h-16 mb-6" src="./assets/practices.webp">
+                    <h1 class="font-headings font-semibold text-base mb-3">Innovation</h1>
+                    <p class="text-gray-600 text-xs">We stay ahead of industry trends and embrace new technologies to offer our customers the most advanced and energy-efficient HVAC solutions. Our commitment to innovation ensures that we provide the best products and services available.</p>
+                  </div>
+                  <div class="bg-white items-center flex flex-col mx-3 md:h-72 my-5 px-9 py-9 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                    <img class="h-16 mb-6" src="./assets/quality.webp">
+                    <h1 class="font-headings font-semibold text-base mb-3">Quality</h1>
+                    <p class="text-gray-600 text-xs">We deliver the highest quality in every aspect of our work. From top-notch products to exceptional services, our commitment ensures you receive durable, efficient, and reliable HVAC solutions, guaranteeing your comfort and satisfaction.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <section id="services">  <!-- Services Section -->
+          <div class="text-center py-5 px-10 md:px-16 lg:px-32 xl:px-64">
+            <h1 class="font-subheadings text-3xl mb-3">Services</h1>
+            <div class="md:flex justify-center items-center"> <!-- Grid Block -->
+              <div class="bg-white items-center flex flex-col mx-3 md:h-auto my-5 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                <div class="w-full bg-cover bg-first h-72 bg-center"></div>
+                <div class="py-4 px-9">
+                  <h1 class="font-headings font-semibold text-lg mb-3">Installation</h1>
+                  <p class="text-gray-600">
+                    At L&G Heating & Cooling, our skilled team excels in installing premium heating and air conditioning systems designed to meet your unique needs and budget. With more than a decade of experience, we ensure a smooth installation process and optimize your system's performance, delivering lasting comfort, reliability, and efficiency for years to come.</p>
+                </div>
+              </div>
+
+              <div class="bg-white items-center flex flex-col mx-3 md:h-auto my-5 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                <div class="w-full bg-cover bg-second h-72 bg-center"></div>
+                <div class="py-4 px-9">
+                  <h1 class="font-headings font-semibold text-lg mb-3">Maintenance</h1>
+                  <p class="text-gray-600">
+                    Maintain the performance of your heating and cooling systems with L&G Heating & Cooling's comprehensive maintenance services. Our experienced technicians conduct regular inspections and tune-ups to extend the lifespan of your equipment, improve energy efficiency, and prevent expensive breakdowns. Rely on us to keep your system running smoothly all year long.</p>
+                </div>
+              </div>
+
+              <div class="bg-white items-center flex flex-col mx-3 md:h-auto my-5 md:w-1/3 border shadow-md hover:shadow-lg hover:transition ease-in duration-300">
+                <div class="w-full bg-cover bg-third h-72 bg-bottom"></div>
+                <div class="py-4 px-9">
+                  <h1 class="font-headings font-semibold text-lg mb-3">Service</h1>
+                  <p class="text-gray-600">
+                    At L&G Heating & Cooling, we understand how disruptive a malfunctioning HVAC system can be. Our prompt and dependable repair services cover all makes and models, ensuring quick resolution to any heating or cooling problems you face. With a well-stocked inventory of parts and equipment, trust us to restore comfort and efficiency to your home or business swiftly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="guarantee">  <!-- Our Guarantee Section -->
+          <div class="text-center py-5 px-10 md:px-16 lg:px-32 xl:px-64">
+            <div class="justify-center items-center flex flex-col md:flex-row p-5">
+              <img class="h-80 mr-11 mb-4 md:mb-auto border-black border-2" src="/assets/guarantee.jpeg ">
+              <div>
+                <h1 class="font-subheadings text-3xl mb-3 text-left">Our Guarantee</h1>
+                <p class="text-sm font-body mb-3 text-left">At L&G Heating & Cooling, we are committed to providing you with top-quality service and products. When you choose us for your heating and cooling needs, you are investing in peace of mind and reliability. Our one-year warranty on craftsmanship ensures that you receive the highest standard of work, with our team standing behind every installation, service, and repair we perform.</p>
+                <p class="text-sm font-body mb-3 text-left">Additionally, we partner with leading brands such as Carrier, Amana, and Goodman, each offering their own robust warranty coverage for their products. Depending on the manufacturer, you can enjoy extended warranty options designed to protect your investment for years to come.</p>
+                <p class="text-sm font-body mb-3 text-left">With L&G Heating & Cooling, you can trust that we prioritize transparency and customer satisfaction. We provide clear, upfront costs and are always available to assist with any warranty inquiries or needs. Choose us for your HVAC solutions and experience the assurance of quality and dependability.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="request-service">  <!-- Request Service Section -->
+          <div class="text-center py-6 px-10 md:px-16 lg:px-32 xl:px-64 flex flex-col justify-center items-center">
+            <h1 class="font-subheadings text-3xl mb-4">Request Service</h1>
+            <div class="flex">
+              <div id="success" class="hidden flex-col justify-center items-center text-center border bg-green-50 px-8 py-3 shadow-md mr-4">
+                <img src="/assets/success.webp" class="h-24 mb-5 mt-5">
+                <h1 class="font-bold text-lg mb-2 font-headings">Thank You for Contacting Us</h1>
+                <p class="font-body mb-10">Thank you for your message. We'll review the information you've provided, and a team member will be in touch with you soon.</p>
+              </div>
+
+              <div id="error" class="hidden flex-col justify-center items-center text-center border bg-red-50 px-8 py-3 shadow-md mr-4">
+                <img src="/assets/error.png" class="h-24 mb-5 mt-5">
+                <h1 class="font-bold text-lg mb-2 font-headings">There has been an unexpected error</h1>
+                <p class="font-body mb-10">We are sorry, but there has been an unexpected error while processing your request. Please try again later, or give us a call.</p>
+              </div>
+
+              <div id="form-div" class="flex flex-col justify-center items-center text-center border bg-white px-8 py-3 shadow-md mr-4">
+                <h1 class="font-bold mb-3">Please fill out the form below, and a member of our team will contact you shortly!</h1>
+                <form class="flex flex-col w-full items-center" id="contact-form"> <!-- Contact form HTML -->
+                  <div class="flex w-full">
+                    <input class="border mb-3 px-2 py-2 w-1/2 mr-2" type="text" id="fname" name="fname" placeholder="First Name" required />
+                    <input class="border mb-3 px-2 py-2 w-1/2" type="text" id="lname" name="lname" placeholder="Last Name" required />
+                  </div>
+                  <div class="flex w-full">
+                    <input class="border mb-3 px-2 py-2 w-1/2 mr-2" type="text" id="email" name="email" placeholder="Email Address" required />
+                    <input class="border mb-3 px-2 py-2 w-1/2" type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number" required />
+                  </div>
+                  <div class="flex w-full">
+                    <input class="border mb-3 px-2 py-2 w-1/2 mr-2" type="text" id="street" name="street" placeholder="Street Address" required />
+                    <input class="border mb-3 px-2 py-2 w-1/2" type="text" id="city" name="city" placeholder="City" required />
+                  </div>
+                  <select class="w-full py-2 mb-3 pl-2" name="type" id="install-type">
+                    <option value="install">Installation</option>
+                    <option value="service">Service</option>
+                    <option value="repair">Repair</option>
+                    <option value="estimate">Request Estimate</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <textarea class="border mb-3 px-2 pb-20 resize-none w-full" id="description" name="description" placeholder="Description of issue" required></textarea>
+                  <button type="submit" class="px-2 text-white font-bold bg-primary-50 hover:bg-primary-100 transition ease-in duration-300 py-2 rounded-md w-6/12">Submit</button>
+                </form> 
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <footer>
+          <div class="bg-blue-300 items-center lg:flex justify-between py-12 px-8"> <!-- Footer Wrapper -->
+            <div class="lg:ml-32 pb-3 lg:pb-0"> <!-- Logo & Copyright -->
+                  <a href="#"><img class="h-14 w-auto align-middle mb-3" src="/assets/logo.png" alt="L&G Heating Logo"></a>
+                  <span class="text-xs leading-5 font-semibold text-gray-700">© L&G Heating & Cooling, Inc. 2024 All rights Reserved.</span>
+            </div>
+    
+            <div class="text-black"> <!-- Links -->
+                <ul class="grid leading-5 grid-cols-3 lg:gap-9 lg:mr-32">
+                  <div>
+                    <li class="mb-6">
+                    <a href="#about-us" class="text-xs font-semibold hover:text-gray-400 hover:transition ease-in duration-300">About Us</a>
+                    </li>
+                    <li class="mb-6">
+                    <a href="#our-values" class="text-xs font-semibold hover:text-gray-400 hover:transition ease-in duration-300">Our Values</a>
+                    </li>
+                  </div>
+    
+                  <div>
+                    <li class="mb-6">
+                      <a href="#services" class="text-xs font-semibold hover:text-gray-400 hover:transition ease-in duration-300">Services</a>
+                    </li>
+                    <li class="mb-6">
+                      <a href="#guarantee" class="text-xs font-semibold hover:text-gray-400 hover:transition ease-in duration-300">Our Guarantee</a>
+                    </li>
+                  </div>
+    
+                  <div>
+                    <li class="mb-6">
+                      <a href="#request-service" class="text-xs font-semibold hover:text-gray-400 hover:transition ease-in duration-300">Request Service</a>
+                    </li>
+                  </div>
+                </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "landgheating.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mathew Sinadinos",
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./input.css -o ./output.css --watch"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
