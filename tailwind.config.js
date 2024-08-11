@@ -12,6 +12,7 @@ module.exports = {
           'first': "url('/assets/install.jpg')",
           'second': "url('/assets/second.jpg')",
           'third': "url('/assets/bg-third.png')",
+          'city': "url('/assets/city-bg.jpeg')",
         },
         colors: {
           primary: {
